@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.suaequipe.barberapp.ui.home.HomeFragment"
+        android:label="Início"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/nav_cadastro"
+        android:name="com.suaequipe.barberapp.ui.cadastro.CadastroFragment"
+        android:label="Cadastro"
+        tools:layout="@layout/fragment_cadastro" />
+    <fragment
+        android:id="@+id/nav_confirmacao_cadastro"
+        android:name="com.suaequipe.barberapp.ui.cadastro.ConfirmacaoCadastroFragment"
+        android:label="Confirmar Cadastro"
+        tools:layout="@layout/fragment_confirmacao_cadastro" />
+    <fragment
+        android:id="@+id/nav_clientes"
+        android:name="com.suaequipe.barberapp.ui.clientes.ClientesFragment"
+        android:label="Clientes"
+        tools:layout="@layout/fragment_clientes" />
+    <fragment
+        android:id="@+id/nav_agendamentos"
+        android:name="com.suaequipe.barberapp.ui.agendamentos.AgendamentosFragment"
+        android:label="Agendamentos"
+        tools:layout="@layout/fragment_agendamentos" />
+
+    <fragment
+        android:id="@+id/nav_historico_agendamentos"
+        android:name="com.suaequipe.barberapp.ui.historicoagendamentos.HistoricoAgendamentosFragment"
+        android:label="Histórico de Agendamentos"
+        tools:layout="@layout/fragment_historico_agendamentos" />
+    <fragment
+        android:id="@+id/nav_programa_milhas"
+        android:name="com.suaequipe.barberapp.ui.programamilhas.ProgramaMilhasFragment"
+        android:label="Programa Milhas"
+        tools:layout="@layout/fragment_programa_milhas" />
+    <fragment
+        android:id="@+id/nav_missao"
+        android:name="com.suaequipe.barberapp.ui.missao.MissaoFragment"
+        android:label="Missão"
+        tools:layout="@layout/fragment_missao" />
+    <fragment
+        android:id="@+id/nav_sobre"
+        android:name="com.suaequipe.barberapp.ui.sobre.SobreFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_sobre" />
+</navigation>

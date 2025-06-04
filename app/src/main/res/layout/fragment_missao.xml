@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.suaequipe.barberapp.ui.missao.MissaoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewMissaoTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nossa Missão"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"/>
+
+        <ImageView
+            android:id="@+id/imageViewMissaoIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_flag_mission" /> <TextView
+        android:id="@+id/textViewMissaoTexto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aqui na BarberApp, nossa missão é conectar você aos melhores barbeiros da cidade, oferecendo uma experiência de agendamento simples, rápida e confiável. Buscamos valorizar o seu tempo e garantir que cada corte seja mais do que um serviço, mas um momento de cuidado e bem-estar. Estamos comprometidos com a excelência, a inovação e a satisfação total dos nossos clientes e parceiros barbeiros."
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.2"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/textViewValoresTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nossos Valores"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textViewValoresTexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Qualidade Impecável\n• Paixão pelo que Fazemos\n• Respeito e Transparência\n• Inovação Constante\n• Foco no Cliente"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.2"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+</ScrollView>

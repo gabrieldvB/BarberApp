@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context="com.suaequipe.barberapp.ui.clientes.ClientesFragment">
+
+    <TextView
+        android:id="@+id/textViewClientesTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clientes Cadastrados"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewClientes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="Lista de clientes cadastrados" tools:listitem="@layout/item_cliente" />
+    <TextView
+        android:id="@+id/textViewListaVazia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nenhum cliente cadastrado ainda."
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone" android:layout_marginTop="16dp"/>
+
+</LinearLayout>

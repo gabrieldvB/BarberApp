@@ -3,7 +3,7 @@ package com.suaequipe.barberapp.ui.historicoagendamentos;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton; // NOVO
+import android.widget.ImageButton; // Importe o ImageButton
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,14 +14,12 @@ import java.util.List;
 public class HistoricoAgendamentosAdapter extends RecyclerView.Adapter<HistoricoAgendamentosAdapter.HistoricoViewHolder> {
 
     private List<Agendamento> listaAgendamentos;
-    private final OnDeleteClickListener listener; // NOVO
+    private final OnDeleteClickListener listener;
 
-    // NOVA INTERFACE
     public interface OnDeleteClickListener {
         void onDeleteClick(int position);
     }
 
-    // CONSTRUTOR MODIFICADO
     public HistoricoAgendamentosAdapter(List<Agendamento> listaAgendamentos, OnDeleteClickListener listener) {
         this.listaAgendamentos = listaAgendamentos;
         this.listener = listener;
@@ -37,9 +35,21 @@ public class HistoricoAgendamentosAdapter extends RecyclerView.Adapter<Historico
 
     @Override
     public void onBindViewHolder(@NonNull HistoricoViewHolder holder, int position) {
-        // ... (lógica existente para preencher os dados)
+        Agendamento agendamentoAtual = listaAgendamentos.get(position);
 
-        // NOVO: Ação para o botão de excluir
+        holder.textViewClienteNome.setText(agendamentoAtual.getNomeCliente());
+        holder.textViewServico.setText(agendamentoAtual.getServico());
+        holder.textViewData.setText(agendamentoAtual.getData());
+        holder.textViewHora.setText(agendamentoAtual.getHora());
+        holder.textViewFormaPagamento.setText(agendamentoAtual.getFormaPagamento());
+
+        if (agendamentoAtual.getDetalhesCartao() != null && !agendamentoAtual.getDetalhesCartao().isEmpty()) {
+            holder.textViewDetalhesCartao.setText("Cartão: " + agendamentoAtual.getDetalhesCartao());
+            holder.textViewDetalhesCartao.setVisibility(View.VISIBLE);
+        } else {
+            holder.textViewDetalhesCartao.setVisibility(View.GONE);
+        }
+
         holder.btnExcluir.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onDeleteClick(position);
@@ -52,15 +62,26 @@ public class HistoricoAgendamentosAdapter extends RecyclerView.Adapter<Historico
         return listaAgendamentos == null ? 0 : listaAgendamentos.size();
     }
 
-    // VIEWHOLDER MODIFICADO
+    // Classe ViewHolder CORRIGIDA E COMPLETA
     static class HistoricoViewHolder extends RecyclerView.ViewHolder {
-        // ... (TextViews existentes)
-        ImageButton btnExcluir; // NOVO
+        TextView textViewClienteNome;
+        TextView textViewServico;
+        TextView textViewData;
+        TextView textViewHora;
+        TextView textViewFormaPagamento;
+        TextView textViewDetalhesCartao;
+        ImageButton btnExcluir; // O botão de exclusão
 
         public HistoricoViewHolder(@NonNull View itemView) {
             super(itemView);
-            // ... (findViewById para os TextViews)
-            btnExcluir = itemView.findViewById(R.id.btnExcluirAgendamento); // NOVO
+            // Garantindo que TODOS os componentes sejam encontrados
+            textViewClienteNome = itemView.findViewById(R.id.textViewItemAgClienteNome);
+            textViewServico = itemView.findViewById(R.id.textViewItemAgServico);
+            textViewData = itemView.findViewById(R.id.textViewItemAgData);
+            textViewHora = itemView.findViewById(R.id.textViewItemAgHora);
+            textViewFormaPagamento = itemView.findViewById(R.id.textViewItemAgFormaPagamento);
+            textViewDetalhesCartao = itemView.findViewById(R.id.textViewItemAgDetalhesCartao);
+            btnExcluir = itemView.findViewById(R.id.btnExcluirAgendamento);
         }
     }
 

@@ -1,4 +1,4 @@
-package com.suaequipe.barberapp; // Certifique-se que este é seu pacote raiz
+package com.suaequipe.barberapp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,17 @@ public class ClienteRepository {
     }
 
     public static List<Cliente> getListaClientes() {
-        return new ArrayList<>(listaClientes); // Retorna uma cópia para evitar modificação externa direta
+        return new ArrayList<>(listaClientes);
     }
 
-    public static void clearClientes() { // Opcional: para limpar a lista para testes
+    // NOVO MÉTODO PARA REMOVER UM CLIENTE
+    public static void removeCliente(Cliente cliente) {
+        if (cliente != null) {
+            listaClientes.remove(cliente);
+        }
+    }
+
+    public static void clearClientes() {
         listaClientes.clear();
     }
 }

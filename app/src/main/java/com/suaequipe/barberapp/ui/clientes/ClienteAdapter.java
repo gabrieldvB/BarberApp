@@ -3,6 +3,7 @@ package com.suaequipe.barberapp.ui.clientes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton; // NOVO
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,9 +14,17 @@ import java.util.List;
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder> {
 
     private List<Cliente> listaClientes;
+    private final OnDeleteClickListener listener; // NOVO: Listener
 
-    public ClienteAdapter(List<Cliente> listaClientes) {
+    // NOVA INTERFACE
+    public interface OnDeleteClickListener {
+        void onDeleteClick(int position);
+    }
+
+    // CONSTRUTOR MODIFICADO
+    public ClienteAdapter(List<Cliente> listaClientes, OnDeleteClickListener listener) {
         this.listaClientes = listaClientes;
+        this.listener = listener;
     }
 
     @NonNull
@@ -29,12 +38,16 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
     @Override
     public void onBindViewHolder(@NonNull ClienteViewHolder holder, int position) {
         Cliente clienteAtual = listaClientes.get(position);
-
-        // Usar nomePrincipal como nome principal para exibição
         holder.textViewNome.setText(clienteAtual.getNomePrincipal());
         holder.textViewCelular.setText(clienteAtual.getCelular());
         holder.textViewEmail.setText(clienteAtual.getEmail());
-        // REMOVIDO: holder.textViewTipoPagamento.setText(clienteAtual.getTipoPagamento());
+
+        // NOVO: Ação para o botão de excluir
+        holder.btnExcluir.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDeleteClick(position);
+            }
+        });
     }
 
     @Override
@@ -42,18 +55,19 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteAdapter.ClienteV
         return listaClientes == null ? 0 : listaClientes.size();
     }
 
+    // VIEWHOLDER MODIFICADO
     static class ClienteViewHolder extends RecyclerView.ViewHolder {
         TextView textViewNome;
         TextView textViewCelular;
         TextView textViewEmail;
-        // REMOVIDO: TextView textViewTipoPagamento;
+        ImageButton btnExcluir; // NOVO
 
         public ClienteViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNome = itemView.findViewById(R.id.textViewItemClienteNome);
             textViewCelular = itemView.findViewById(R.id.textViewItemClienteCelular);
             textViewEmail = itemView.findViewById(R.id.textViewItemClienteEmail);
-            // REMOVIDO: textViewTipoPagamento = itemView.findViewById(R.id.textViewItemClienteTipoPagamento);
+            btnExcluir = itemView.findViewById(R.id.btnExcluirCliente); // NOVO
         }
     }
 

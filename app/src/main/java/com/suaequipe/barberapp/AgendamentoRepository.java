@@ -1,4 +1,4 @@
-package com.suaequipe.barberapp; // Certifique-se que este é seu pacote raiz
+package com.suaequipe.barberapp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,17 @@ public class AgendamentoRepository {
     }
 
     public static List<Agendamento> getListaAgendamentos() {
-        return new ArrayList<>(listaAgendamentos); // Retorna uma cópia
+        return new ArrayList<>(listaAgendamentos);
     }
 
-    public static void clearAgendamentos() { // Opcional
+    // NOVO MÉTODO PARA REMOVER UM AGENDAMENTO
+    public static void removeAgendamento(Agendamento agendamento) {
+        if (agendamento != null) {
+            listaAgendamentos.remove(agendamento);
+        }
+    }
+
+    public static void clearAgendamentos() {
         listaAgendamentos.clear();
     }
 }
